@@ -50,11 +50,12 @@ function Nav() {
   };
   const handlelogout=()=>{
     localStorage.clear();
+    window.location.reload();
     navigate('/')
   }
   return (
     <div>
-      <nav className="flex justify-between items-center py-4 px-6 bg-gray-100 border-b-4 border-b-slate-900">
+      <nav className="list-none flex justify-between items-center py-4 px-6 bg-gray-100 border-b-4 border-b-slate-900">
         <Link to='/'>
           <img className="w-40" src={logo} alt="logo" />
         </Link>
@@ -89,12 +90,12 @@ function Nav() {
         </div>
       </nav>
       {menuOpen && (
-        <div className="md:hidden bg-gray-100 py-4 px-6 border-b-4 border-b-slate-900">
-          <Link to='/' onClick={handleMenuToggle}><li className="border-b-2 py-2">HOME</li></Link>
+        <div className="list-none md:hidden bg-gray-100 py-4 px-6 border-b-4 border-b-slate-900 ">
+          <Link to='/' onClick={handleMenuToggle}><li className="border-b-2 flex justify-center py-2">HOME</li></Link>
           <Link to='/list'>
-            <li className="border-b-2 py-2" onClick={handleMenuToggle}>RIDES</li>
+            <li className="border-b-2 py-2 flex justify-center" onClick={handleMenuToggle}>RIDES</li>
           </Link>
-          <li className="border-b-2 py-2" onClick={handleMenuToggle}>ABOUT</li>
+          <li className="border-b-2 py-2 flex justify-center" onClick={handleMenuToggle}>ABOUT</li>
           {token ? (
             <div>
               <button onClick={handlelogout} className="bg-color2 hover:bg-blue-700 text-color5 shadow-md font-bold py-2 px-4 rounded mt-2 w-full">log out</button>

@@ -1,4 +1,5 @@
 function Card({ props }) {
+  console.log(props)
   const { driver, carmodel, phone, carPictures, trajectory, Desc } = props;
 
   return (

@@ -139,7 +139,7 @@ function Addride() {
         },
       });
 
-      const { name, email } = userResponse.data;
+      const { name, email, picture,fblink } = userResponse.data;
 
       const trajectory = [
         { state: formData.fromState, city: formData.fromCity },
@@ -152,8 +152,24 @@ function Addride() {
         trajectory,
         driver: name,
         email,
+        dirverPic:picture,
+        fblink
       };
+      //////////image cloudinary process
+      if (formData.carPictures[0]) {
+        const imageData = new FormData();
+        imageData.append('file', formData.carPictures[0]); 
+        imageData.append('upload_preset', 'proimag');
+        try {
+          const response = await axios.post('https://api.cloudinary.com/v1_1/drawpzs79/image/upload', imageData); // Replace with your Cloudinary cloud name
+          formData.carPictures[0] = response.data.secure_url;
+        } catch (error) {
+          console.error('Error uploading image:', error);
+          return;
+        }
+      }
 
+      /////////
       console.log(dataToSubmit);
 
       const response = await axios.post('http://localhost:5410/ride', dataToSubmit);

@@ -85,6 +85,7 @@ function Register() {
       phone: '+216',
       picture: null,
     });
+    navigate('/')
   };
 
   const handleSocialLogin = (platform) => {

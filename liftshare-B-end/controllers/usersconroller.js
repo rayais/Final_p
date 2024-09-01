@@ -40,17 +40,32 @@ exports.login=async(req,res)=>{
         res.status(500).send( error);
       }
 }
-exports.updateuser=async(req,res)=>{
-    const user=req.body
-    console.log(user)
-    try {
-        await userschema.findByIdAndUpdate(user._id,user)
+exports.updateuser = async (req, res) => {
+  const { name, email, picture } = req.body;
+  const token = req.headers.authorization.split(' ')[1]; // Extract the token from the Authorization header
 
-        res.status(200).send({msg:"user upadated",user})
-    } catch (error) {
-        res.status(500).send(error)
-    }
-}
+  try {
+      // Verify the token to get the user ID
+      const decoded = jwt.verify(token, '2024'); // Replace 'your_jwt_secret' with your actual secret key
+      const userId = decoded.id;
+
+      // Find the user by ID and update the details
+      const updatedUser = await userschema.findByIdAndUpdate(
+          userId,
+          { name, email, picture },
+          { new: true } // This option returns the updated document
+      );
+
+      if (!updatedUser) {
+          return res.status(404).send({ msg: 'User not found' });
+      }
+
+      res.status(200).send({ msg: "User updated", user: updatedUser });
+  } catch (error) {
+      console.error('Error updating user:', error);
+      res.status(500).send({ msg: 'Internal server error', error });
+  }
+};
 exports.getUser = async (req, res) => {
   const token = req.headers.authorization?.split(' ')[1]; // Extract token from Authorization header
  

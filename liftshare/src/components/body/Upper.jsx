@@ -1,5 +1,6 @@
 import React from 'react';
 import image from '../../assets/Carpooling.jpg';
+import { Link } from 'react-router-dom';
 
 function Upper() {
   const style = {
@@ -23,7 +24,9 @@ function Upper() {
               "Share the Ride, Share the Cost, Share the Future."<br /><br />
               "Join the Carpool Revolution - Save Money, Time, and the Planet."
               </p>
+                <Link to='/register'>
               <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">Get Started</button>
+                </Link>
             </div>
           </div>
           <div className="lg:w-1/2 xl:w-2/3">
