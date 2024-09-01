@@ -21,7 +21,6 @@ const userschema=new mongoose.Schema({
         required:true
     },
     fblink:String
-    
 },
 {
     timestamps:true
