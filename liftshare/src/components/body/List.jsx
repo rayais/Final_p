@@ -21,6 +21,7 @@ function List() {
         {(
   rides.slice(0, 5).map((ride, index) => (
     <div key={index}>
+      {console.log(ride)}
       <Card props={ride} />
     </div>
   ))

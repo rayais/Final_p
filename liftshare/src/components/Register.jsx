@@ -152,7 +152,7 @@ function Register() {
                   className="w-full p-2 border border-gray-300 rounded"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  required
+                  minLength={8}
                 />
               </div>
               <div className="mb-4">

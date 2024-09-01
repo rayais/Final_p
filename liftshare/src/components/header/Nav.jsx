@@ -50,8 +50,8 @@ function Nav() {
   };
   const handlelogout=()=>{
     localStorage.clear();
-    window.location.reload();
     navigate('/')
+    window.location.reload();
   }
   return (
     <div>

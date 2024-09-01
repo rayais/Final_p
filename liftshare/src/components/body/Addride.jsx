@@ -152,7 +152,7 @@ function Addride() {
         trajectory,
         driver: name,
         email,
-        dirverPic:picture,
+        profPic:picture,
         fblink
       };
       //////////image cloudinary process
@@ -170,7 +170,7 @@ function Addride() {
       }
 
       /////////
-      console.log(dataToSubmit);
+      console.log("data to submit :",dataToSubmit);
 
       const response = await axios.post('http://localhost:5410/ride', dataToSubmit);
       console.log('Ride added successfully:', response.data);
@@ -307,7 +307,7 @@ function Addride() {
                   name="returnTime"
                   className="w-full p-2 border border-gray-300 rounded"
                   onChange={handleInputChange}
-                  required
+                  
                 />
               </div>
               <div className="mb-4">
@@ -439,4 +439,3 @@ function Addride() {
 }
 
 export default Addride;
-//verson 1

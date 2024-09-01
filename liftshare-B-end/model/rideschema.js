@@ -21,7 +21,7 @@ const rideschema=new mongoose.Schema({
         type:Array,
         required:true
     },
-    Description:{
+    description:{
         type:String
         
     },
